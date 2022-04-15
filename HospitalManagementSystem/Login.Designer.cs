@@ -35,10 +35,10 @@ namespace HospitalManagementSystem
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblLogo = new System.Windows.Forms.Label();
             this.lblBackground = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEnter
@@ -49,7 +49,7 @@ namespace HospitalManagementSystem
             this.btnEnter.FlatAppearance.BorderSize = 0;
             this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnter.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.Location = new System.Drawing.Point(55, 332);
+            this.btnEnter.Location = new System.Drawing.Point(117, 320);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(179, 33);
             this.btnEnter.TabIndex = 0;
@@ -63,11 +63,11 @@ namespace HospitalManagementSystem
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.Color.White;
-            this.lblEmail.Location = new System.Drawing.Point(52, 141);
+            this.lblEmail.Location = new System.Drawing.Point(114, 133);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(169, 25);
+            this.lblEmail.Size = new System.Drawing.Size(190, 25);
             this.lblEmail.TabIndex = 1;
-            this.lblEmail.Text = "Correo / Usuario";
+            this.lblEmail.Text = "Correo Electronico";
             // 
             // lblPassword
             // 
@@ -75,7 +75,7 @@ namespace HospitalManagementSystem
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.White;
-            this.lblPassword.Location = new System.Drawing.Point(52, 208);
+            this.lblPassword.Location = new System.Drawing.Point(114, 200);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(123, 25);
             this.lblPassword.TabIndex = 2;
@@ -84,7 +84,7 @@ namespace HospitalManagementSystem
             // txtUser
             // 
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUser.Location = new System.Drawing.Point(55, 166);
+            this.txtUser.Location = new System.Drawing.Point(117, 158);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(179, 20);
             this.txtUser.TabIndex = 3;
@@ -92,22 +92,11 @@ namespace HospitalManagementSystem
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Location = new System.Drawing.Point(55, 233);
+            this.txtPassword.Location = new System.Drawing.Point(117, 225);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(179, 20);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(549, 84);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(40, 13);
-            this.lblTitle.TabIndex = 5;
-            this.lblTitle.Text = "LOGIN";
             // 
             // btnClose
             // 
@@ -131,7 +120,7 @@ namespace HospitalManagementSystem
             // 
             this.lblLogo.BackColor = System.Drawing.Color.Transparent;
             this.lblLogo.Image = global::HospitalManagementSystem.Properties.Resources.Logo;
-            this.lblLogo.Location = new System.Drawing.Point(552, 165);
+            this.lblLogo.Location = new System.Drawing.Point(505, 168);
             this.lblLogo.Name = "lblLogo";
             this.lblLogo.Size = new System.Drawing.Size(200, 200);
             this.lblLogo.TabIndex = 8;
@@ -143,6 +132,17 @@ namespace HospitalManagementSystem
             this.lblBackground.Name = "lblBackground";
             this.lblBackground.Size = new System.Drawing.Size(800, 450);
             this.lblBackground.TabIndex = 6;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(434, 73);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(63, 13);
+            this.lblTitle.TabIndex = 5;
+            this.lblTitle.Text = "Bienvenido!";
             // 
             // Login
             // 
@@ -177,10 +177,10 @@ namespace HospitalManagementSystem
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Label lblBackground;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
 
