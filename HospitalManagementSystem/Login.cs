@@ -89,17 +89,18 @@ namespace HospitalManagementSystem
 
             if (!Validator.TryValidateObject(user, context, errors, true))
             {
-                //Validación denegada
+                //Validación del Modelo Denegada
                 foreach (ValidationResult result in errors)
                     MessageBox.Show(result.ErrorMessage);
             }
             else
             {
-                //Validación aprobada
+                //Validación del Modelo Aprobada
                 password = DataSecurity.GetSHA256(txtPassword.Text); //Encriptación de contraseña
 
+                //Validación de Base de Datos
+
                 //Autorización del login
-                //MessageBox.Show("Validated");
 
                 //Cambio de vista
                 if(rol == 1)
