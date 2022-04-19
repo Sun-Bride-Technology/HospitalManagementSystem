@@ -34,11 +34,15 @@ namespace HospitalManagementSystem
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblLogo = new System.Windows.Forms.Label();
             this.lblBackground = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.LoadingPanel = new System.Windows.Forms.Panel();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.btnEnter = new FontAwesome.Sharp.IconButton();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.lblLogo = new System.Windows.Forms.Label();
+            this.LoadingPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEmail
@@ -86,16 +90,6 @@ namespace HospitalManagementSystem
             this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // lblLogo
-            // 
-            this.lblLogo.BackColor = System.Drawing.Color.Transparent;
-            this.lblLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblLogo.Image = global::HospitalManagementSystem.Properties.Resources.Logo;
-            this.lblLogo.Location = new System.Drawing.Point(505, 168);
-            this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(200, 200);
-            this.lblLogo.TabIndex = 8;
-            // 
             // lblBackground
             // 
             this.lblBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
@@ -114,6 +108,43 @@ namespace HospitalManagementSystem
             this.lblTitle.Size = new System.Drawing.Size(63, 13);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "Bienvenido!";
+            // 
+            // LoadingPanel
+            // 
+            this.LoadingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
+            this.LoadingPanel.Controls.Add(this.Loading);
+            this.LoadingPanel.Location = new System.Drawing.Point(-2, 0);
+            this.LoadingPanel.Name = "LoadingPanel";
+            this.LoadingPanel.Size = new System.Drawing.Size(802, 450);
+            this.LoadingPanel.TabIndex = 12;
+            this.LoadingPanel.Visible = false;
+            // 
+            // Loading
+            // 
+            this.Loading.Location = new System.Drawing.Point(0, 0);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(400, 400);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Loading.TabIndex = 0;
+            this.Loading.TabStop = false;
+            // 
+            // btnEnter
+            // 
+            this.btnEnter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
+            this.btnEnter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnter.FlatAppearance.BorderSize = 0;
+            this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEnter.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnEnter.IconColor = System.Drawing.Color.Black;
+            this.btnEnter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEnter.Location = new System.Drawing.Point(119, 337);
+            this.btnEnter.Name = "btnEnter";
+            this.btnEnter.Size = new System.Drawing.Size(179, 31);
+            this.btnEnter.TabIndex = 11;
+            this.btnEnter.Text = "ENTRAR";
+            this.btnEnter.UseVisualStyleBackColor = false;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // btnClose
             // 
@@ -134,23 +165,15 @@ namespace HospitalManagementSystem
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
-            // btnEnter
+            // lblLogo
             // 
-            this.btnEnter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
-            this.btnEnter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEnter.FlatAppearance.BorderSize = 0;
-            this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEnter.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnEnter.IconColor = System.Drawing.Color.Black;
-            this.btnEnter.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEnter.Location = new System.Drawing.Point(119, 337);
-            this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(179, 31);
-            this.btnEnter.TabIndex = 11;
-            this.btnEnter.Text = "ENTRAR";
-            this.btnEnter.UseVisualStyleBackColor = false;
-            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
+            this.lblLogo.BackColor = System.Drawing.Color.Transparent;
+            this.lblLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblLogo.Image = global::HospitalManagementSystem.Properties.Resources.Logo;
+            this.lblLogo.Location = new System.Drawing.Point(505, 168);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Size = new System.Drawing.Size(200, 200);
+            this.lblLogo.TabIndex = 8;
             // 
             // Login
             // 
@@ -158,6 +181,7 @@ namespace HospitalManagementSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.LoadingPanel);
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblLogo);
@@ -173,6 +197,8 @@ namespace HospitalManagementSystem
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            this.LoadingPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +214,8 @@ namespace HospitalManagementSystem
         private System.Windows.Forms.Label lblTitle;
         private FontAwesome.Sharp.IconButton btnClose;
         private FontAwesome.Sharp.IconButton btnEnter;
+        private System.Windows.Forms.Panel LoadingPanel;
+        private System.Windows.Forms.PictureBox Loading;
     }
 }
 

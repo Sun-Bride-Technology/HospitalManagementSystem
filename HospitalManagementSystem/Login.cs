@@ -12,11 +12,13 @@ using HospitalManagementSystem.Models;
 using HospitalManagementSystem.Security;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace HospitalManagementSystem
 {
     public partial class Login : Form
     {
+        //private LoadingPage loading;
         #region Fonts
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
@@ -58,7 +60,20 @@ namespace HospitalManagementSystem
             #endregion
         }
 
-        private void btnEnter_Click(object sender, EventArgs e)
+        private async void btnEnter_Click(object sender, EventArgs e)
+        {
+            LoadingPanel.Visible = true;
+            Loading.Load("../../Content/Loading.gif");
+            Loading.Location = new Point(this.Width / 2 - Loading.Width / 2, this.Height / 2 - Loading.Height / 2);
+
+            Task oTask = new Task(ValidationLogin);
+            oTask.Start();
+
+            await oTask;
+            LoadingPanel.Visible = false;
+        }
+
+        private void ValidationLogin()
         {
             string email = txtUser.Text;
             string password = txtPassword.Text;
@@ -69,7 +84,7 @@ namespace HospitalManagementSystem
             bool state = true;
 
             //Validación del Modelo
-            User user = new User { Id = id, Rol = rol, State = state, Email = email, Password = password};
+            User user = new User { Id = id, Rol = rol, State = state, Email = email, Password = password };
 
             ValidationContext context = new ValidationContext(user, null, null);
             IList<ValidationResult> errors = new List<ValidationResult>();
@@ -77,8 +92,12 @@ namespace HospitalManagementSystem
             if (!Validator.TryValidateObject(user, context, errors, true))
             {
                 //Validación del Modelo Denegada
+                Thread.Sleep(4000);
                 foreach (ValidationResult result in errors)
+                {
+                    Thread.Sleep(250);
                     MessageBox.Show(result.ErrorMessage);
+                }
             }
             else
             {
@@ -90,23 +109,20 @@ namespace HospitalManagementSystem
                 //Autorización del login
 
                 //Cambio de vista
-                if(rol == 1)
+                if (rol == 1)
                 {
                     Administrador admin = new Administrador();
                     admin.Show();
 
                 }
-                else if(rol == 2)
+                else if (rol == 2)
                 {
                     Recepcion rp = new Recepcion();
                     rp.Show();
                 }
                 this.Hide();
             }
-                
         }
-
-
 
         private void Login_Load(object sender, EventArgs e)
         {

@@ -126,6 +126,9 @@
     <Folder Include="DataBase\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Login-Background.jpg" />
     <Content Include="Content\Logo.ico" />
     <Content Include="Content\Logo.png" />
