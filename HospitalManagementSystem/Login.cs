@@ -17,19 +17,6 @@ namespace HospitalManagementSystem
 {
     public partial class Login : Form
     {
-        #region Custom Button
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-            (
-               int nLeft,
-               int nTop,
-               int nRight,
-               int nBottom,
-               int nWidthEllipse,
-               int nHeightEllipse
-            );
-        #endregion
-
         #region Fonts
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
@@ -119,6 +106,8 @@ namespace HospitalManagementSystem
                 
         }
 
+
+
         private void Login_Load(object sender, EventArgs e)
         {
             lblTitle.Font = ProximaNova_Regular;
@@ -128,15 +117,13 @@ namespace HospitalManagementSystem
             txtUser.Font = Proxima_Nova_Thin;
             txtPassword.Font = Proxima_Nova_Thin;
 
+            btnEnter.Font = Proxima_Nova_Thin;
+
             TransparetBackground(lblTitle);
             TransparetBackground(lblEmail);
             TransparetBackground(lblPassword);
             TransparetBackground(btnClose);
             TransparetBackground(lblLogo);
-
-            btnEnter.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnEnter.Width, btnEnter.Height, 30, 30));
-            txtUser.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, txtUser.Width, txtUser.Height, 15, 15));
-            txtPassword.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, txtPassword.Width, txtPassword.Height, 15, 15));
         }
 
         #region Helpers
@@ -161,7 +148,7 @@ namespace HospitalManagementSystem
         }
         #endregion
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
