@@ -18,7 +18,6 @@ namespace HospitalManagementSystem
 {
     public partial class Login : Form
     {
-        //private LoadingPage loading;
         #region Fonts
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
@@ -163,10 +162,11 @@ namespace HospitalManagementSystem
             C.Visible = true;
         }
         #endregion
-
+        
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
     }
 }
