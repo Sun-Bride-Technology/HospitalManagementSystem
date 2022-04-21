@@ -1,0 +1,50 @@
+USE HospitalManagementSystem;
+GO
+
+/*STATUS*/
+INSERT INTO [SECURITY].[STATUS]
+	VALUES('Current');
+INSERT INTO [SECURITY].[STATUS]
+	VALUES('Disabled');
+INSERT INTO [SECURITY].[STATUS]
+	VALUES('Removed');
+	--PATIENT
+INSERT INTO [SECURITY].[STATUS]
+	VALUES('Admitted');
+INSERT INTO [SECURITY].[STATUS]
+	VALUES('Patient Discharge');
+
+/*ROL*/
+INSERT INTO [SECURITY].ROL
+	VALUES('Administrator');
+INSERT INTO [SECURITY].ROL
+	VALUES('Receptionist');
+
+/*JOB*/
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Anesthesiology and Resuscitation');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Cardiology');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Emergency Medicine');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Intensive Medicine');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Pneumology');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Neurology');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Medical','Dermatology');
+-- NURSING --
+INSERT INTO HOSPITAL.JOB
+	VALUES('Nursing','Obstetric-Gynecological');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Nursing','Medical-Surgical Care');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Nursing','Mental Health');
+INSERT INTO HOSPITAL.JOB
+	VALUES('Nursing','Pediatric');
+
+SELECT * FROM SECURITY.ROL;
+SELECT * FROM SECURITY.STATUS;
+SELECT * FROM HOSPITAL.JOB;
