@@ -13,11 +13,13 @@ using HospitalManagementSystem.Security;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using System.Threading;
+using HospitalManagementSystem.DataBase;
 
 namespace HospitalManagementSystem
 {
     public partial class Login : Form
     {
+        private HMSystemEntities db = new HMSystemEntities();
         #region Fonts
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
@@ -59,36 +61,25 @@ namespace HospitalManagementSystem
             #endregion
         }
 
-        private async void btnEnter_Click(object sender, EventArgs e)
+        private void btnEnter_Click(object sender, EventArgs e)
         {
-            LoadingPanel.Visible = true;
-            Loading.Load("../../Content/Loading.gif");
-            Loading.Location = new Point(this.Width / 2 - Loading.Width / 2, this.Height / 2 - Loading.Height / 2);
 
-            Task oTask = new Task(ValidationLogin);
-            oTask.Start();
-
-            await oTask;
-            LoadingPanel.Visible = false;
-        }
-
-        private void ValidationLogin()
-        {
             string email = txtUser.Text;
             string password = txtPassword.Text;
-
             //Obtención de Usuario de la Base de Datos
             int id = 1;
             int rol = 2;
-            bool state = true;
+            int state = 1;
+            //Validación del Modelo
+            User user = new User { Id = id, Rol = rol, Status = state, Email = email };
 
             //Validación del Modelo
-            User user = new User { Id = id, Rol = rol, State = state, Email = email, Password = password };
+            Models.Login mUser = new Models.Login { Email = email, Password = password };
 
-            ValidationContext context = new ValidationContext(user, null, null);
+            ValidationContext context = new ValidationContext(mUser, null, null);
             IList<ValidationResult> errors = new List<ValidationResult>();
 
-            if (!Validator.TryValidateObject(user, context, errors, true))
+            if (!Validator.TryValidateObject(mUser, context, errors, true))
             {
                 //Validación del Modelo Denegada
                 Thread.Sleep(4000);
@@ -104,22 +95,27 @@ namespace HospitalManagementSystem
                 password = DataSecurity.GetSHA256(txtPassword.Text); //Encriptación de contraseña
 
                 //Validación de Base de Datos
+                var oUser = db.SP_LOGIN(email, password).ToList();
 
                 //Autorización del login
-
-                //Cambio de vista
-                if (rol == 1)
+                if (oUser.Count() > 0)
                 {
-                    Administrador admin = new Administrador();
-                    admin.Show();
-
+                    if (oUser[0].Rol == 1)
+                    {                   //Administrador
+                        Administrador admin = new Administrador();
+                        admin.Show();
+                    }
+                    else if (oUser[0].Rol == 2)
+                    {                   //Recepción
+                        Recepcion rp = new Recepcion();
+                        rp.Show();
+                    }
+                    this.Hide();
                 }
-                else if (rol == 2)
+                else
                 {
-                    Recepcion rp = new Recepcion();
-                    rp.Show();
+                    MessageBox.Show("ERROR: Datos incorrectos");
                 }
-                this.Hide();
             }
         }
 
