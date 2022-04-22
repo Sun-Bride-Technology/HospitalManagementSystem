@@ -1,0 +1,1010 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ALLOCATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patient" Type="int" Nullable="false" />
+          <Property Name="DoctorInCharge" Type="int" Nullable="false" />
+          <Property Name="Assgnment" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DateOfAssignment" Type="datetime" Nullable="false" />
+          <Property Name="DischargeDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CONSULTATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Allocation" Type="int" Nullable="false" />
+          <Property Name="Patient" Type="int" Nullable="false" />
+          <Property Name="Doctor" Type="int" Nullable="false" />
+          <Property Name="ConsultationDate" Type="datetime" Nullable="false" />
+          <Property Name="Symptoms" Type="varchar(max)" Nullable="false" />
+          <Property Name="Diagnosis" Type="varchar(max)" Nullable="false" />
+          <Property Name="Treatment" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotherLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="char" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Job" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JOB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CURP" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotherLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Phone" Type="char" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATUS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HospitalManagementSystem.SECURITY.USER' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Rol" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Rol" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ALLOCATION_DOCTORINCHARGE">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="ALLOCATION" Type="Self.ALLOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ALLOCATION">
+              <PropertyRef Name="DoctorInCharge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ALLOCATION_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="ALLOCATION" Type="Self.ALLOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ALLOCATION">
+              <PropertyRef Name="Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSULTATION_ALLOCATION">
+          <End Role="ALLOCATION" Type="Self.ALLOCATION" Multiplicity="1" />
+          <End Role="CONSULTATION" Type="Self.CONSULTATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALLOCATION">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CONSULTATION">
+              <PropertyRef Name="Allocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSULTATION_DOCTOR">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="CONSULTATION" Type="Self.CONSULTATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CONSULTATION">
+              <PropertyRef Name="Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSULTATION_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="CONSULTATION" Type="Self.CONSULTATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CONSULTATION">
+              <PropertyRef Name="Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLOTEE_STATUS">
+          <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLOYEE_JOB">
+          <End Role="JOB" Type="Self.JOB" Multiplicity="1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JOB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="Job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PATIENT_STATUS">
+          <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PATIENT">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ID">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_STATUS">
+          <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_ADD_EMPLOYEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="MotherLastName" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="BirthDate" Type="date" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="char" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Job" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DEAD_PATIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_EMPLOYEE_NOT_AVAILABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_LOCATE_PATIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="IdPatient" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_MEDICAL_HISTORY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_NEW_MEDICAL_CONSULTATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Allocation" Type="int" Mode="In" />
+          <Parameter Name="Patient" Type="int" Mode="In" />
+          <Parameter Name="Doctor" Type="int" Mode="In" />
+          <Parameter Name="ConsultationDate" Type="datetime" Mode="In" />
+          <Parameter Name="Symptoms" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Diagnosis" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Treatment" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_PATIENT_ASSIGNMENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Patient" Type="int" Mode="In" />
+          <Parameter Name="DoctorInCharge" Type="int" Mode="In" />
+          <Parameter Name="Assgnment" Type="varchar" Mode="In" />
+          <Parameter Name="DateOfAssignment" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_PATIENT_DISCHARGE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_REGISTER_PATIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="CURP" Type="char" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="MotherLastName" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="BirthDate" Type="date" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Phone" Type="char" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SEARCH_PATIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Data" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UNEMPLOYED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_EMPLOYEES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="MotherLastName" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="BirthDate" Type="date" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="char" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Job" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_PATIENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HOSPITAL">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="CURP" Type="char" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="MotherLastName" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="char" Mode="In" />
+          <Parameter Name="BirthDate" Type="date" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Phone" Type="char" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ADD_ROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SECURITY">
+          <Parameter Name="ROL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SECURITY">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="HospitalManagementSystemModelStoreContainer">
+          <EntitySet Name="ALLOCATION" EntityType="Self.ALLOCATION" Schema="HOSPITAL" store:Type="Tables" />
+          <EntitySet Name="CONSULTATION" EntityType="Self.CONSULTATION" Schema="HOSPITAL" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="HOSPITAL" store:Type="Tables" />
+          <EntitySet Name="JOB" EntityType="Self.JOB" Schema="HOSPITAL" store:Type="Tables" />
+          <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="HOSPITAL" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="SECURITY" store:Type="Tables" />
+          <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="SECURITY" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" store:Type="Tables" store:Schema="SECURITY">
+            <DefiningQuery>SELECT 
+    [USER].[Id] AS [Id], 
+    [USER].[Rol] AS [Rol], 
+    [USER].[Status] AS [Status], 
+    [USER].[Email] AS [Email], 
+    [USER].[Password] AS [Password]
+    FROM [SECURITY].[USER] AS [USER]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ALLOCATION_DOCTORINCHARGE" Association="Self.FK_ALLOCATION_DOCTORINCHARGE">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="ALLOCATION" EntitySet="ALLOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ALLOCATION_PATIENT" Association="Self.FK_ALLOCATION_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="ALLOCATION" EntitySet="ALLOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSULTATION_ALLOCATION" Association="Self.FK_CONSULTATION_ALLOCATION">
+            <End Role="ALLOCATION" EntitySet="ALLOCATION" />
+            <End Role="CONSULTATION" EntitySet="CONSULTATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSULTATION_DOCTOR" Association="Self.FK_CONSULTATION_DOCTOR">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="CONSULTATION" EntitySet="CONSULTATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSULTATION_PATIENT" Association="Self.FK_CONSULTATION_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="CONSULTATION" EntitySet="CONSULTATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLOTEE_STATUS" Association="Self.FK_EMPLOTEE_STATUS">
+            <End Role="STATUS" EntitySet="STATUS" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLOYEE_JOB" Association="Self.FK_EMPLOYEE_JOB">
+            <End Role="JOB" EntitySet="JOB" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PATIENT_STATUS" Association="Self.FK_PATIENT_STATUS">
+            <End Role="STATUS" EntitySet="STATUS" />
+            <End Role="PATIENT" EntitySet="PATIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ID" Association="Self.FK_USER_ID">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROL" Association="Self.FK_USER_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_STATUS" Association="Self.FK_USER_STATUS">
+            <End Role="STATUS" EntitySet="STATUS" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ALLOCATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patient" Type="Int32" Nullable="false" />
+          <Property Name="DoctorInCharge" Type="Int32" Nullable="false" />
+          <Property Name="Assgnment" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfAssignment" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DischargeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_ALLOCATION_DOCTORINCHARGE" FromRole="ALLOCATION" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="PATIENT1" Relationship="Self.FK_ALLOCATION_PATIENT" FromRole="ALLOCATION" ToRole="PATIENT" />
+          <NavigationProperty Name="CONSULTATION" Relationship="Self.FK_CONSULTATION_ALLOCATION" FromRole="ALLOCATION" ToRole="CONSULTATION" />
+        </EntityType>
+        <EntityType Name="CONSULTATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Allocation" Type="Int32" Nullable="false" />
+          <Property Name="Patient" Type="Int32" Nullable="false" />
+          <Property Name="Doctor" Type="Int32" Nullable="false" />
+          <Property Name="ConsultationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Symptoms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Diagnosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Treatment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ALLOCATION1" Relationship="Self.FK_CONSULTATION_ALLOCATION" FromRole="CONSULTATION" ToRole="ALLOCATION" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_CONSULTATION_DOCTOR" FromRole="CONSULTATION" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="PATIENT1" Relationship="Self.FK_CONSULTATION_PATIENT" FromRole="CONSULTATION" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotherLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Job" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ALLOCATION" Relationship="Self.FK_ALLOCATION_DOCTORINCHARGE" FromRole="EMPLOYEE" ToRole="ALLOCATION" />
+          <NavigationProperty Name="CONSULTATION" Relationship="Self.FK_CONSULTATION_DOCTOR" FromRole="EMPLOYEE" ToRole="CONSULTATION" />
+          <NavigationProperty Name="STATUS1" Relationship="Self.FK_EMPLOTEE_STATUS" FromRole="EMPLOYEE" ToRole="STATUS" />
+          <NavigationProperty Name="JOB1" Relationship="Self.FK_EMPLOYEE_JOB" FromRole="EMPLOYEE" ToRole="JOB" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_USER_ID" FromRole="EMPLOYEE" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="JOB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_EMPLOYEE_JOB" FromRole="JOB" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CURP" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotherLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ALLOCATION" Relationship="Self.FK_ALLOCATION_PATIENT" FromRole="PATIENT" ToRole="ALLOCATION" />
+          <NavigationProperty Name="CONSULTATION" Relationship="Self.FK_CONSULTATION_PATIENT" FromRole="PATIENT" ToRole="CONSULTATION" />
+          <NavigationProperty Name="STATUS1" Relationship="Self.FK_PATIENT_STATUS" FromRole="PATIENT" ToRole="STATUS" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_USER_ROL" FromRole="ROL" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="STATUS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_EMPLOTEE_STATUS" FromRole="STATUS" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="PATIENT" Relationship="Self.FK_PATIENT_STATUS" FromRole="STATUS" ToRole="PATIENT" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_USER_STATUS" FromRole="STATUS" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Rol" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Rol" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_USER_ID" FromRole="USER" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="ROL1" Relationship="Self.FK_USER_ROL" FromRole="USER" ToRole="ROL" />
+          <NavigationProperty Name="STATUS1" Relationship="Self.FK_USER_STATUS" FromRole="USER" ToRole="STATUS" />
+        </EntityType>
+        <Association Name="FK_ALLOCATION_DOCTORINCHARGE">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="ALLOCATION" Type="Self.ALLOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ALLOCATION">
+              <PropertyRef Name="DoctorInCharge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ALLOCATION_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="ALLOCATION" Type="Self.ALLOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ALLOCATION">
+              <PropertyRef Name="Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSULTATION_ALLOCATION">
+          <End Role="ALLOCATION" Type="Self.ALLOCATION" Multiplicity="1" />
+          <End Role="CONSULTATION" Type="Self.CONSULTATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALLOCATION">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CONSULTATION">
+              <PropertyRef Name="Allocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSULTATION_DOCTOR">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="CONSULTATION" Type="Self.CONSULTATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CONSULTATION">
+              <PropertyRef Name="Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONSULTATION_PATIENT">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="CONSULTATION" Type="Self.CONSULTATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CONSULTATION">
+              <PropertyRef Name="Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLOTEE_STATUS">
+          <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLOYEE_JOB">
+          <End Role="JOB" Type="Self.JOB" Multiplicity="1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JOB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="Job" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ID">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PATIENT_STATUS">
+          <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PATIENT">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_STATUS">
+          <End Role="STATUS" Type="Self.STATUS" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HMSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ALLOCATION" EntityType="Self.ALLOCATION" />
+          <EntitySet Name="CONSULTATION" EntityType="Self.CONSULTATION" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="JOB" EntityType="Self.JOB" />
+          <EntitySet Name="PATIENT" EntityType="Self.PATIENT" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <EntitySet Name="STATUS" EntityType="Self.STATUS" />
+          <EntitySet Name="USER" EntityType="Self.USER" />
+          <AssociationSet Name="FK_ALLOCATION_DOCTORINCHARGE" Association="Self.FK_ALLOCATION_DOCTORINCHARGE">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="ALLOCATION" EntitySet="ALLOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ALLOCATION_PATIENT" Association="Self.FK_ALLOCATION_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="ALLOCATION" EntitySet="ALLOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSULTATION_ALLOCATION" Association="Self.FK_CONSULTATION_ALLOCATION">
+            <End Role="ALLOCATION" EntitySet="ALLOCATION" />
+            <End Role="CONSULTATION" EntitySet="CONSULTATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSULTATION_DOCTOR" Association="Self.FK_CONSULTATION_DOCTOR">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="CONSULTATION" EntitySet="CONSULTATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONSULTATION_PATIENT" Association="Self.FK_CONSULTATION_PATIENT">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="CONSULTATION" EntitySet="CONSULTATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLOTEE_STATUS" Association="Self.FK_EMPLOTEE_STATUS">
+            <End Role="STATUS" EntitySet="STATUS" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLOYEE_JOB" Association="Self.FK_EMPLOYEE_JOB">
+            <End Role="JOB" EntitySet="JOB" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ID" Association="Self.FK_USER_ID">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PATIENT_STATUS" Association="Self.FK_PATIENT_STATUS">
+            <End Role="STATUS" EntitySet="STATUS" />
+            <End Role="PATIENT" EntitySet="PATIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROL" Association="Self.FK_USER_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_STATUS" Association="Self.FK_USER_STATUS">
+            <End Role="STATUS" EntitySet="STATUS" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <FunctionImport Name="SP_ADD_EMPLOYEE">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="MotherLastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Job" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DEAD_PATIENT">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EMPLOYEE_NOT_AVAILABLE">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LOCATE_PATIENT" ReturnType="Collection(HospitalManagementSystemModel.SP_LOCATE_PATIENT_Result)">
+            <Parameter Name="IdPatient" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MEDICAL_HISTORY" ReturnType="Collection(HospitalManagementSystemModel.SP_MEDICAL_HISTORY_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_NEW_MEDICAL_CONSULTATION">
+            <Parameter Name="Allocation" Mode="In" Type="Int32" />
+            <Parameter Name="Patient" Mode="In" Type="Int32" />
+            <Parameter Name="Doctor" Mode="In" Type="Int32" />
+            <Parameter Name="ConsultationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Symptoms" Mode="In" Type="String" />
+            <Parameter Name="Diagnosis" Mode="In" Type="String" />
+            <Parameter Name="Treatment" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_PATIENT_ASSIGNMENT">
+            <Parameter Name="Patient" Mode="In" Type="Int32" />
+            <Parameter Name="DoctorInCharge" Mode="In" Type="Int32" />
+            <Parameter Name="Assgnment" Mode="In" Type="String" />
+            <Parameter Name="DateOfAssignment" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_PATIENT_DISCHARGE">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_REGISTER_PATIENT">
+            <Parameter Name="CURP" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="MotherLastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEARCH_PATIENT" ReturnType="Collection(HospitalManagementSystemModel.SP_SEARCH_PATIENT_Result)">
+            <Parameter Name="Data" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UNEMPLOYED">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_EMPLOYEES">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="MotherLastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Job" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_PATIENT">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="CURP" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="MotherLastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ADD_ROL">
+            <Parameter Name="ROL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LOGIN" ReturnType="Collection(HospitalManagementSystemModel.SP_LOGIN_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_LOCATE_PATIENT_Result">
+          <Property Type="String" Name="Assgnment" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="DateOfAssignment" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DischargeDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_MEDICAL_HISTORY_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Allocation" Nullable="false" />
+          <Property Type="Int32" Name="Patient" Nullable="false" />
+          <Property Type="Int32" Name="Doctor" Nullable="false" />
+          <Property Type="DateTime" Name="ConsultationDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Symptoms" Nullable="false" />
+          <Property Type="String" Name="Diagnosis" Nullable="false" />
+          <Property Type="String" Name="Treatment" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_SEARCH_PATIENT_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CURP" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MotherLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="false" />
+          <Property Type="Int32" Name="Age" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_LOGIN_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Rol" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalManagementSystemModelStoreContainer" CdmEntityContainer="HMSystemEntities">
+          <EntitySetMapping Name="ALLOCATION">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.ALLOCATION">
+              <MappingFragment StoreEntitySet="ALLOCATION">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Patient" ColumnName="Patient" />
+                <ScalarProperty Name="DoctorInCharge" ColumnName="DoctorInCharge" />
+                <ScalarProperty Name="Assgnment" ColumnName="Assgnment" />
+                <ScalarProperty Name="DateOfAssignment" ColumnName="DateOfAssignment" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSULTATION">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.CONSULTATION">
+              <MappingFragment StoreEntitySet="CONSULTATION">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="Patient" ColumnName="Patient" />
+                <ScalarProperty Name="Doctor" ColumnName="Doctor" />
+                <ScalarProperty Name="ConsultationDate" ColumnName="ConsultationDate" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEE">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MotherLastName" ColumnName="MotherLastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JOB">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.JOB">
+              <MappingFragment StoreEntitySet="JOB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENT">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.PATIENT">
+              <MappingFragment StoreEntitySet="PATIENT">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MotherLastName" ColumnName="MotherLastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rol1" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.STATUS">
+              <MappingFragment StoreEntitySet="STATUS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="HospitalManagementSystemModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ADD_EMPLOYEE" FunctionName="HospitalManagementSystemModel.Store.SP_ADD_EMPLOYEE" />
+          <FunctionImportMapping FunctionImportName="SP_DEAD_PATIENT" FunctionName="HospitalManagementSystemModel.Store.SP_DEAD_PATIENT" />
+          <FunctionImportMapping FunctionImportName="SP_EMPLOYEE_NOT_AVAILABLE" FunctionName="HospitalManagementSystemModel.Store.SP_EMPLOYEE_NOT_AVAILABLE" />
+          <FunctionImportMapping FunctionImportName="SP_LOCATE_PATIENT" FunctionName="HospitalManagementSystemModel.Store.SP_LOCATE_PATIENT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementSystemModel.SP_LOCATE_PATIENT_Result">
+                <ScalarProperty Name="Assgnment" ColumnName="Assgnment" />
+                <ScalarProperty Name="DateOfAssignment" ColumnName="DateOfAssignment" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MEDICAL_HISTORY" FunctionName="HospitalManagementSystemModel.Store.SP_MEDICAL_HISTORY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementSystemModel.SP_MEDICAL_HISTORY_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="Patient" ColumnName="Patient" />
+                <ScalarProperty Name="Doctor" ColumnName="Doctor" />
+                <ScalarProperty Name="ConsultationDate" ColumnName="ConsultationDate" />
+                <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_NEW_MEDICAL_CONSULTATION" FunctionName="HospitalManagementSystemModel.Store.SP_NEW_MEDICAL_CONSULTATION" />
+          <FunctionImportMapping FunctionImportName="SP_PATIENT_ASSIGNMENT" FunctionName="HospitalManagementSystemModel.Store.SP_PATIENT_ASSIGNMENT" />
+          <FunctionImportMapping FunctionImportName="SP_PATIENT_DISCHARGE" FunctionName="HospitalManagementSystemModel.Store.SP_PATIENT_DISCHARGE" />
+          <FunctionImportMapping FunctionImportName="SP_REGISTER_PATIENT" FunctionName="HospitalManagementSystemModel.Store.SP_REGISTER_PATIENT" />
+          <FunctionImportMapping FunctionImportName="SP_SEARCH_PATIENT" FunctionName="HospitalManagementSystemModel.Store.SP_SEARCH_PATIENT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementSystemModel.SP_SEARCH_PATIENT_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MotherLastName" ColumnName="MotherLastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_UNEMPLOYED" FunctionName="HospitalManagementSystemModel.Store.SP_UNEMPLOYED" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_EMPLOYEES" FunctionName="HospitalManagementSystemModel.Store.SP_UPDATE_EMPLOYEES" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_PATIENT" FunctionName="HospitalManagementSystemModel.Store.SP_UPDATE_PATIENT" />
+          <FunctionImportMapping FunctionImportName="SP_ADD_ROL" FunctionName="HospitalManagementSystemModel.Store.SP_ADD_ROL" />
+          <FunctionImportMapping FunctionImportName="SP_LOGIN" FunctionName="HospitalManagementSystemModel.Store.SP_LOGIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementSystemModel.SP_LOGIN_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
