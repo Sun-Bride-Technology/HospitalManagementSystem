@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Content\hsp.jpg" />
     <Content Include="Content\Loading.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

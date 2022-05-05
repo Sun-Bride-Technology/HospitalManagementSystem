@@ -373,19 +373,25 @@ namespace HospitalManagementSystem
         #endregion
 
         #region Paciente
-        private void iconButton5_Click(object sender, EventArgs e)
-        {
-            
-            if (panelPaciente.Visible == true)
-            {
-                panelPaciente.Visible = false;
-            }
-            else
-            {
-                panelPaciente.Visible = true;
-            }
-            
-        }
+        //private void iconButton5_Click(object sender, EventArgs e)
+        //{
+
+        //    if (panelPaciente.Visible == true)
+        //    {
+        //        panelPaciente.Visible = false;
+        //    }
+        //    else
+        //    {
+        //        panelPaciente.Visible = true;
+        //    }
+
+        //}
         #endregion
+
+        private void HoraFecha_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToLongTimeString();
+            lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
     }
 }
