@@ -9,11 +9,21 @@ namespace HospitalManagementSystem.Models
     class Consulta
     {
         public int Id { get; set; }
-        public int IdAsignacion { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Sintomas { get; set; }
-        public string Diagnostico { get; set; }
-        public string Tratamiento { get; set; }
+        public string Allocation { get; set; }
+        public string Patient { get; set; }
+        public string Doctor { get; set; }
+        public System.DateTime ConsultationDate { get; set; }
+    }
 
+    class DetalleConsulta
+    {
+        public int Id { get; set; }
+        public string Allocation { get; set; }
+        public string Patient { get; set; }
+        public string Doctor { get; set; }
+        public System.DateTime ConsultationDate { get; set; }
+        public string Symptoms { get; set; }
+        public string Diagnosis { get; set; }
+        public string Treatment { get; set; }
     }
 }

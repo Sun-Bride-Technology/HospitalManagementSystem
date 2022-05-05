@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HospitalManagementSystem.DataBase;
+using HospitalManagementSystem.Models;
 
 namespace HospitalManagementSystem
 {
@@ -45,7 +46,21 @@ namespace HospitalManagementSystem
             ProximaNova_Regular = new Font(fonts.Families[0], 12.0F);
             #endregion
         }
+        private void Recepcion_Load(object sender, EventArgs e)
+        {
+            iconButton2.Font = ProximaNova_Regular;
+            iconButton3.Font = ProximaNova_Regular;
+            iconButton4.Font = ProximaNova_Regular;
+            iconButton5.Font = ProximaNova_Regular;
+            btnSignOut.Font = ProximaNova_Regular;
 
+            //TblReports
+            LoadReports();
+
+            GenerateBeds();
+        }
+
+        #region Diseño de formulario
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -152,6 +167,12 @@ namespace HospitalManagementSystem
             }
         }
 
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.Show();
+        }
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -202,20 +223,169 @@ namespace HospitalManagementSystem
             }
         }
 
-        private void Recepcion_Load(object sender, EventArgs e)
+        #endregion
+        
+
+        #region Reportes
+        public void LoadReports()
         {
-            iconButton2.Font = ProximaNova_Regular;
-            iconButton3.Font = ProximaNova_Regular;
-            iconButton4.Font = ProximaNova_Regular;
-            iconButton5.Font = ProximaNova_Regular;
-            btnSignOut.Font = ProximaNova_Regular;
+            List<Consulta> lstAllocations = new List<Consulta>();
+            foreach (var item in db.CONSULTATION.OrderByDescending(c => c.ConsultationDate))//.Where(consult => consult.PATIENT1.Status == 4))
+            {
+                Consulta consulta = new Consulta()
+                {
+                    Id = item.Id,
+                    Allocation = item.ALLOCATION1.Assgnment,
+                    Patient = $"{item.PATIENT1.Name} {item.PATIENT1.LastName} {item.PATIENT1.MotherLastName}",
+                    Doctor = $"{item.EMPLOYEE.Name} {item.EMPLOYEE.LastName} {item.EMPLOYEE.MotherLastName}",
+                    ConsultationDate = item.ConsultationDate
+                };
+                lstAllocations.Add(consulta);
+            }
+            this.grdvReports.DataSource = lstAllocations;
+            
+        }
+        
+
+        private void grdvReports_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(grdvReports.Columns[e.ColumnIndex].Name == "Acciones")
+            {
+                var index = grdvReports.Rows[e.RowIndex].Index;
+                var id = grdvReports.Rows[index].Cells[1].Value.ToString();
+
+                Report report = new Report();
+                report.GetConsultation(Convert.ToInt32(grdvReports.Rows[index].Cells[1].Value.ToString()));
+                report.Show();
+            }
         }
 
-        private void btnSignOut_Click(object sender, EventArgs e)
+        private void iconButton3_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            this.Hide();
-            login.Show();
+            LoadReports();
+            if (panelReportes.Visible == true)
+            {
+                panelReportes.Visible = false;
+            }
+            else
+            {
+                panelReportes.Visible = true;
+            }
         }
+        #endregion
+
+        #region Asignacion
+        public void GenerateBeds()
+        {
+            var allocation = db.ALLOCATION.Select(a => a.Assgnment).ToList();
+            foreach (var item in allocation)
+            {
+                try
+                {
+                    if (item.Contains("A"))
+                    {
+                        if(item.Contains("01"))
+                            A01.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("02"))
+                            A02.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("03"))
+                            A03.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("04"))
+                            A04.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("05"))
+                            A05.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("06"))
+                            A06.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("07"))
+                            A07.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("08"))
+                            A08.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("09"))
+                            A09.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("10"))
+                            A10.BackColor = Color.FromArgb(153, 93, 111);
+                    }
+                    else if(item.Contains("B"))
+                    {
+                        if (item.Contains("01"))
+                            B01.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("02"))
+                            B02.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("03"))
+                            B03.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("04"))
+                            B04.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("05"))
+                            B05.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("06"))
+                            B06.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("07"))
+                            B07.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("08"))
+                            B08.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("09"))
+                            B09.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("10"))
+                            B10.BackColor = Color.FromArgb(153, 93, 111);
+                    }
+                    else
+                    {
+                        if (item.Contains("01"))
+                            C01.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("02"))
+                            C02.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("03"))
+                            C03.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("04"))
+                            C04.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("05"))
+                            C05.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("06"))
+                            C06.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("07"))
+                            C07.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("08"))
+                            C08.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("09"))
+                            C09.BackColor = Color.FromArgb(153, 93, 111);
+                        if (item.Contains("10"))
+                            C10.BackColor = Color.FromArgb(153, 93, 111);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            GenerateBeds();
+            if (panelAsignacion.Visible == true)
+            {
+                panelAsignacion.Visible = false;
+            }
+            else
+            {
+                panelAsignacion.Visible = true;
+            }
+        }
+        #endregion
+
+        #region Paciente
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            
+            if (panelPaciente.Visible == true)
+            {
+                panelPaciente.Visible = false;
+            }
+            else
+            {
+                panelPaciente.Visible = true;
+            }
+            
+        }
+        #endregion
     }
 }

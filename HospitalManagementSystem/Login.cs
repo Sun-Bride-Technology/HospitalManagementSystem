@@ -95,26 +95,34 @@ namespace HospitalManagementSystem
                 password = DataSecurity.GetSHA256(txtPassword.Text); //Encriptación de contraseña
 
                 //Validación de Base de Datos
-                var oUser = db.SP_LOGIN(email, password).ToList();
+                List<SP_LOGIN_Result> oUser = new List<SP_LOGIN_Result>();
+                try
+                {
+                    
+                    oUser = db.SP_LOGIN(email, password).ToList();
 
-                //Autorización del login
-                if (oUser.Count() > 0)
-                {
-                    if (oUser[0].Rol == 1)
-                    {                   //Administrador
-                        Administrador admin = new Administrador();
-                        admin.Show();
+                    //Autorización del login
+                    if (oUser.Count() > 0)
+                    {
+                        if (oUser[0].Rol == 1)
+                        {                   //Administrador
+                            Administrador admin = new Administrador();
+                            admin.Show();
+                        }
+                        else if (oUser[0].Rol == 2)
+                        {                   //Recepción
+                            Recepcion rp = new Recepcion();
+                            rp.Show();
+                        }
+                        this.Hide();
                     }
-                    else if (oUser[0].Rol == 2)
-                    {                   //Recepción
-                        Recepcion rp = new Recepcion();
-                        rp.Show();
-                    }
-                    this.Hide();
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR: Datos incorrectos");
+                    if(oUser.Count() == 0)
+                        MessageBox.Show("ERROR: Datos incorrectos");
+                    else
+                        MessageBox.Show(ex.Message);
                 }
             }
         }

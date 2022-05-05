@@ -145,6 +145,12 @@
     <Compile Include="Recepcion.Designer.cs">
       <DependentUpon>Recepcion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="Security\DataSecurity.cs" />
     <EmbeddedResource Include="Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
@@ -185,6 +191,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Proxima Nova Alt Bold.otf" />
     <EmbeddedResource Include="Resources\Proxima Nova Alt Light.otf" />
     <EmbeddedResource Include="Resources\Proxima Nova Alt Thin.otf" />
