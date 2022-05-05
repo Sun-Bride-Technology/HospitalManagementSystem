@@ -224,7 +224,22 @@ namespace HospitalManagementSystem
         }
 
         #endregion
-        
+
+        #region Home
+        private void HoraFecha_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToLongTimeString();
+            lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            if (panelHome.Visible != true)
+            {
+                panelHome.Visible = true;
+            }
+        }
+        #endregion
 
         #region Reportes
         public void LoadReports()
@@ -266,10 +281,12 @@ namespace HospitalManagementSystem
             if (panelReportes.Visible == true)
             {
                 panelReportes.Visible = false;
+                panelHome.Visible = true;
             }
             else
             {
                 panelReportes.Visible = true;
+                panelHome.Visible = false;
             }
         }
         #endregion
@@ -364,34 +381,30 @@ namespace HospitalManagementSystem
             if (panelAsignacion.Visible == true)
             {
                 panelAsignacion.Visible = false;
+                panelHome.Visible = true;
             }
             else
             {
                 panelAsignacion.Visible = true;
+                panelHome.Visible = false;
             }
         }
         #endregion
 
         #region Paciente
-        //private void iconButton5_Click(object sender, EventArgs e)
-        //{
-
-        //    if (panelPaciente.Visible == true)
-        //    {
-        //        panelPaciente.Visible = false;
-        //    }
-        //    else
-        //    {
-        //        panelPaciente.Visible = true;
-        //    }
-
-        //}
+        private void iconButton5_Click_1(object sender, EventArgs e)
+        {
+            if (panelPaciente.Visible == true)
+            {
+                panelPaciente.Visible = false;
+            }
+            else
+            {
+                panelPaciente.Visible = true;
+            }
+        }
+        
         #endregion
 
-        private void HoraFecha_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = DateTime.Now.ToLongTimeString();
-            lblFecha.Text = DateTime.Now.ToLongDateString();
-        }
     }
 }

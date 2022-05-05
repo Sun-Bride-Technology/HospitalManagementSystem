@@ -115,6 +115,7 @@ namespace HospitalManagementSystem
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.panelPaciente = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -190,6 +191,7 @@ namespace HospitalManagementSystem
             this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton5.UseVisualStyleBackColor = true;
+            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click_1);
             // 
             // iconButton4
             // 
@@ -264,6 +266,7 @@ namespace HospitalManagementSystem
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // panel1
             // 
@@ -372,6 +375,7 @@ namespace HospitalManagementSystem
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.White;
+            this.panelDesktop.Controls.Add(this.panelPaciente);
             this.panelDesktop.Controls.Add(this.panelAsignacion);
             this.panelDesktop.Controls.Add(this.panelReportes);
             this.panelDesktop.Controls.Add(this.panelHome);
@@ -1040,6 +1044,16 @@ namespace HospitalManagementSystem
             this.lblHora.Text = "label14";
             this.lblHora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panelPaciente
+            // 
+            this.panelPaciente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            this.panelPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPaciente.Location = new System.Drawing.Point(0, 0);
+            this.panelPaciente.Name = "panelPaciente";
+            this.panelPaciente.Size = new System.Drawing.Size(774, 581);
+            this.panelPaciente.TabIndex = 3;
+            this.panelPaciente.Visible = false;
+            // 
             // Recepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1149,5 +1163,6 @@ namespace HospitalManagementSystem
         private System.Windows.Forms.Timer HoraFecha;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Panel panelPaciente;
     }
 }
