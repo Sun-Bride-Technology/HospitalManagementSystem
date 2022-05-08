@@ -72,6 +72,12 @@
     <Compile Include="Administrador.Designer.cs">
       <DependentUpon>Administrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarPaciente.Designer.cs">
+      <DependentUpon>AgregarPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <EmbeddedResource Include="Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarPaciente.resx">
+      <DependentUpon>AgregarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomMessageBox.resx">
       <DependentUpon>CustomMessageBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +227,8 @@
     <Content Include="Content\Login-Background.jpg" />
     <Content Include="Content\Logo.ico" />
     <Content Include="Content\Logo.png" />
+    <Content Include="Content\Paciente.ico" />
+    <Content Include="Content\Paciente.jpg" />
     <Content Include="DataBase\DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DB.Context.cs</LastGenOutput>

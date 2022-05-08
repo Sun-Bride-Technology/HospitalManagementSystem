@@ -403,8 +403,23 @@ namespace HospitalManagementSystem
                 panelPaciente.Visible = true;
             }
         }
-        
+
         #endregion
 
+        private void BtnBuscarPaciente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarPaciente Agregar = new AgregarPaciente();
+            Agregar.Show();
+        }
     }
 }
