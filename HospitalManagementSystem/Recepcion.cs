@@ -426,7 +426,7 @@ namespace HospitalManagementSystem
         public void LoadPacient()
         {
             List<Paciente> lstPacientes = new List<Paciente>();
-            foreach (var item in db.PATIENT.OrderBy(c => c.Name))//.Where(consult => consult.PATIENT1.Status == 4))
+            foreach (var item in db.PATIENT.OrderBy(c => c.Name).Where(c => c.Status != 16))
             {
                 Paciente consulta = new Paciente()
                 {
