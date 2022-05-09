@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txboxNombre = new System.Windows.Forms.TextBox();
+            this.txboxAPPP = new System.Windows.Forms.TextBox();
+            this.txboxAPPM = new System.Windows.Forms.TextBox();
+            this.txboxGenero = new System.Windows.Forms.TextBox();
+            this.txboxEdad = new System.Windows.Forms.TextBox();
+            this.txboxNacimiento = new System.Windows.Forms.TextBox();
+            this.txboxCURP = new System.Windows.Forms.TextBox();
+            this.txboxTelefono = new System.Windows.Forms.TextBox();
+            this.txboxDireccion = new System.Windows.Forms.TextBox();
             this.Name1 = new System.Windows.Forms.Label();
             this.Name2 = new System.Windows.Forms.Label();
             this.Name4 = new System.Windows.Forms.Label();
@@ -50,68 +50,68 @@
             this.btnRegresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txboxNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 26);
-            this.textBox1.TabIndex = 0;
+            this.txboxNombre.Location = new System.Drawing.Point(144, 28);
+            this.txboxNombre.Name = "txboxNombre";
+            this.txboxNombre.Size = new System.Drawing.Size(197, 26);
+            this.txboxNombre.TabIndex = 0;
             // 
-            // textBox2
+            // txboxAPPP
             // 
-            this.textBox2.Location = new System.Drawing.Point(144, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(197, 26);
-            this.textBox2.TabIndex = 1;
+            this.txboxAPPP.Location = new System.Drawing.Point(144, 75);
+            this.txboxAPPP.Name = "txboxAPPP";
+            this.txboxAPPP.Size = new System.Drawing.Size(197, 26);
+            this.txboxAPPP.TabIndex = 1;
             // 
-            // textBox3
+            // txboxAPPM
             // 
-            this.textBox3.Location = new System.Drawing.Point(144, 118);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(197, 26);
-            this.textBox3.TabIndex = 2;
+            this.txboxAPPM.Location = new System.Drawing.Point(144, 118);
+            this.txboxAPPM.Name = "txboxAPPM";
+            this.txboxAPPM.Size = new System.Drawing.Size(197, 26);
+            this.txboxAPPM.TabIndex = 2;
             // 
-            // textBox4
+            // txboxGenero
             // 
-            this.textBox4.Location = new System.Drawing.Point(144, 159);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(70, 26);
-            this.textBox4.TabIndex = 3;
+            this.txboxGenero.Location = new System.Drawing.Point(144, 159);
+            this.txboxGenero.Name = "txboxGenero";
+            this.txboxGenero.Size = new System.Drawing.Size(70, 26);
+            this.txboxGenero.TabIndex = 3;
             // 
-            // textBox5
+            // txboxEdad
             // 
-            this.textBox5.Location = new System.Drawing.Point(144, 203);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(70, 26);
-            this.textBox5.TabIndex = 4;
+            this.txboxEdad.Location = new System.Drawing.Point(144, 203);
+            this.txboxEdad.Name = "txboxEdad";
+            this.txboxEdad.Size = new System.Drawing.Size(70, 26);
+            this.txboxEdad.TabIndex = 4;
             // 
-            // textBox6
+            // txboxNacimiento
             // 
-            this.textBox6.Location = new System.Drawing.Point(144, 250);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(127, 26);
-            this.textBox6.TabIndex = 5;
+            this.txboxNacimiento.Location = new System.Drawing.Point(144, 250);
+            this.txboxNacimiento.Name = "txboxNacimiento";
+            this.txboxNacimiento.Size = new System.Drawing.Size(127, 26);
+            this.txboxNacimiento.TabIndex = 5;
             // 
-            // textBox7
+            // txboxCURP
             // 
-            this.textBox7.Location = new System.Drawing.Point(144, 291);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(162, 26);
-            this.textBox7.TabIndex = 6;
+            this.txboxCURP.Location = new System.Drawing.Point(144, 291);
+            this.txboxCURP.Name = "txboxCURP";
+            this.txboxCURP.Size = new System.Drawing.Size(162, 26);
+            this.txboxCURP.TabIndex = 6;
             // 
-            // textBox8
+            // txboxTelefono
             // 
-            this.textBox8.Location = new System.Drawing.Point(144, 334);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(162, 26);
-            this.textBox8.TabIndex = 7;
+            this.txboxTelefono.Location = new System.Drawing.Point(144, 334);
+            this.txboxTelefono.Name = "txboxTelefono";
+            this.txboxTelefono.Size = new System.Drawing.Size(162, 26);
+            this.txboxTelefono.TabIndex = 7;
             // 
-            // textBox9
+            // txboxDireccion
             // 
-            this.textBox9.Location = new System.Drawing.Point(144, 382);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(162, 26);
-            this.textBox9.TabIndex = 8;
+            this.txboxDireccion.Location = new System.Drawing.Point(144, 382);
+            this.txboxDireccion.Name = "txboxDireccion";
+            this.txboxDireccion.Size = new System.Drawing.Size(162, 26);
+            this.txboxDireccion.TabIndex = 8;
             // 
             // Name1
             // 
@@ -235,15 +235,15 @@
             this.Controls.Add(this.Name4);
             this.Controls.Add(this.Name2);
             this.Controls.Add(this.Name1);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txboxDireccion);
+            this.Controls.Add(this.txboxTelefono);
+            this.Controls.Add(this.txboxCURP);
+            this.Controls.Add(this.txboxNacimiento);
+            this.Controls.Add(this.txboxEdad);
+            this.Controls.Add(this.txboxGenero);
+            this.Controls.Add(this.txboxAPPM);
+            this.Controls.Add(this.txboxAPPP);
+            this.Controls.Add(this.txboxNombre);
             this.Name = "AgregarPaciente";
             this.Text = "AgregarPaciente";
             this.ResumeLayout(false);
@@ -253,15 +253,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txboxNombre;
+        private System.Windows.Forms.TextBox txboxAPPP;
+        private System.Windows.Forms.TextBox txboxAPPM;
+        private System.Windows.Forms.TextBox txboxGenero;
+        private System.Windows.Forms.TextBox txboxEdad;
+        private System.Windows.Forms.TextBox txboxNacimiento;
+        private System.Windows.Forms.TextBox txboxCURP;
+        private System.Windows.Forms.TextBox txboxTelefono;
+        private System.Windows.Forms.TextBox txboxDireccion;
         private System.Windows.Forms.Label Name1;
         private System.Windows.Forms.Label Name2;
         private System.Windows.Forms.Label Name4;

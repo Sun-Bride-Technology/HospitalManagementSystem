@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using HospitalManagementSystem.DataBase;
 namespace HospitalManagementSystem
 {
     public partial class AgregarPaciente : Form
@@ -39,8 +39,18 @@ namespace HospitalManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            DialogResult Result = MessageBox.Show("¿Deseas continuar?", "Confirmar", MessageBoxButtons.YesNo);
+            if( Result ==DialogResult.Yes)
+            {
+                using (HMSystemEntities db = new HMSystemEntities()) {
+                    var edad = Convert.ToInt32(txboxEdad.Text);
+                    var nacimiento = Convert.ToDateTime(txboxNacimiento.Text);
+                    db.SP_REGISTER_PATIENT(txboxCURP.Text,txboxNombre.Text, Convert.ToString(txboxAPPP.Text),Convert.ToString(txboxAPPM.Text),Convert.ToString(txboxGenero.Text),nacimiento,edad,Convert.ToString(txboxTelefono.Text),Convert.ToString(txboxDireccion.Text));
+                }
+            }
+       
         }
+                
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {

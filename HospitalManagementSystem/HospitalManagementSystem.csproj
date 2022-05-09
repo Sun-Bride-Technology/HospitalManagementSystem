@@ -220,6 +220,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\lupa.jpg" />
     <None Include="Content\hsp.jpg" />
     <Content Include="Content\Loading.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

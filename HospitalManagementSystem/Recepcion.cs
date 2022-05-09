@@ -413,7 +413,7 @@ namespace HospitalManagementSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            LoadPacient();
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
@@ -421,5 +421,29 @@ namespace HospitalManagementSystem
             AgregarPaciente Agregar = new AgregarPaciente();
             Agregar.Show();
         }
+
+
+        public void LoadPacient()
+        {
+            List<Paciente> lstPacientes = new List<Paciente>();
+            foreach (var item in db.PATIENT.OrderBy(c => c.Name))//.Where(consult => consult.PATIENT1.Status == 4))
+            {
+                Paciente consulta = new Paciente()
+                {
+                    IdPaciente = item.Id,
+                    Nombre = item.Name,
+                    ApMaterno = item.LastName,
+                    ApPaterno = item.LastName,
+                    Sexo = Convert.ToChar(item.Gender),
+                    Direccion = item.Address,
+                    Telefono = item.Phone,
+                    Edad =  Convert.ToInt32(item.Age)
+                };
+                lstPacientes.Add(consulta);
+            }
+            this.DGVPaciente.DataSource = lstPacientes;
+
+        }
     }
 }
+        

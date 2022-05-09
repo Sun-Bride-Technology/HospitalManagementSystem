@@ -44,11 +44,9 @@ namespace HospitalManagementSystem
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.panelPaciente = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.DGVPaciente = new System.Windows.Forms.DataGridView();
             this.BtnVer = new System.Windows.Forms.Button();
             this.BtnAgregar = new System.Windows.Forms.Button();
-            this.BtnBuscarPaciente = new System.Windows.Forms.Button();
             this.panelAsignacion = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -110,6 +108,8 @@ namespace HospitalManagementSystem
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new FontAwesome.Sharp.IconButton();
             this.btnMaximize = new FontAwesome.Sharp.IconButton();
@@ -131,6 +131,8 @@ namespace HospitalManagementSystem
             this.panelReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdvReports)).BeginInit();
             this.panelHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -146,9 +148,8 @@ namespace HospitalManagementSystem
             this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(345, 986);
+            this.panelMenu.Size = new System.Drawing.Size(230, 641);
             this.panelMenu.TabIndex = 9;
             // 
             // panel1
@@ -157,9 +158,8 @@ namespace HospitalManagementSystem
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(345, 134);
+            this.panel1.Size = new System.Drawing.Size(230, 87);
             this.panel1.TabIndex = 0;
             // 
             // panelTitleBar
@@ -169,10 +169,9 @@ namespace HospitalManagementSystem
             this.panelTitleBar.Controls.Add(this.btnMaximize);
             this.panelTitleBar.Controls.Add(this.btnClose);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(345, 0);
-            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelTitleBar.Location = new System.Drawing.Point(230, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1161, 92);
+            this.panelTitleBar.Size = new System.Drawing.Size(774, 60);
             this.panelTitleBar.TabIndex = 10;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -184,52 +183,43 @@ namespace HospitalManagementSystem
             this.panelDesktop.Controls.Add(this.panelReportes);
             this.panelDesktop.Controls.Add(this.panelHome);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(345, 92);
-            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelDesktop.Location = new System.Drawing.Point(230, 60);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1161, 894);
+            this.panelDesktop.Size = new System.Drawing.Size(774, 581);
             this.panelDesktop.TabIndex = 11;
             // 
             // panelPaciente
             // 
             this.panelPaciente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
-            this.panelPaciente.Controls.Add(this.textBox1);
+            this.panelPaciente.Controls.Add(this.pictureBox4);
+            this.panelPaciente.Controls.Add(this.pictureBox3);
             this.panelPaciente.Controls.Add(this.DGVPaciente);
             this.panelPaciente.Controls.Add(this.BtnVer);
             this.panelPaciente.Controls.Add(this.BtnAgregar);
-            this.panelPaciente.Controls.Add(this.BtnBuscarPaciente);
             this.panelPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPaciente.Location = new System.Drawing.Point(0, 0);
-            this.panelPaciente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelPaciente.Name = "panelPaciente";
-            this.panelPaciente.Size = new System.Drawing.Size(1161, 894);
+            this.panelPaciente.Size = new System.Drawing.Size(774, 581);
             this.panelPaciente.TabIndex = 3;
             this.panelPaciente.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Azure;
-            this.textBox1.Location = new System.Drawing.Point(798, 68);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 47);
-            this.textBox1.TabIndex = 4;
             // 
             // DGVPaciente
             // 
             this.DGVPaciente.BackgroundColor = System.Drawing.Color.Azure;
             this.DGVPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVPaciente.Location = new System.Drawing.Point(-23, 50);
+            this.DGVPaciente.Location = new System.Drawing.Point(0, 44);
+            this.DGVPaciente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DGVPaciente.Name = "DGVPaciente";
             this.DGVPaciente.RowTemplate.Height = 28;
-            this.DGVPaciente.Size = new System.Drawing.Size(765, 418);
+            this.DGVPaciente.Size = new System.Drawing.Size(510, 476);
             this.DGVPaciente.TabIndex = 3;
             // 
             // BtnVer
             // 
-            this.BtnVer.Location = new System.Drawing.Point(896, 175);
+            this.BtnVer.Location = new System.Drawing.Point(604, 130);
+            this.BtnVer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnVer.Name = "BtnVer";
-            this.BtnVer.Size = new System.Drawing.Size(202, 70);
+            this.BtnVer.Size = new System.Drawing.Size(135, 46);
             this.BtnVer.TabIndex = 2;
             this.BtnVer.Text = "Ver todos";
             this.BtnVer.UseVisualStyleBackColor = true;
@@ -237,23 +227,14 @@ namespace HospitalManagementSystem
             // 
             // BtnAgregar
             // 
-            this.BtnAgregar.Location = new System.Drawing.Point(897, 302);
+            this.BtnAgregar.Location = new System.Drawing.Point(604, 229);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(201, 68);
+            this.BtnAgregar.Size = new System.Drawing.Size(134, 44);
             this.BtnAgregar.TabIndex = 1;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
-            // 
-            // BtnBuscarPaciente
-            // 
-            this.BtnBuscarPaciente.Location = new System.Drawing.Point(996, 74);
-            this.BtnBuscarPaciente.Name = "BtnBuscarPaciente";
-            this.BtnBuscarPaciente.Size = new System.Drawing.Size(158, 41);
-            this.BtnBuscarPaciente.TabIndex = 0;
-            this.BtnBuscarPaciente.Text = "Buscar";
-            this.BtnBuscarPaciente.UseVisualStyleBackColor = true;
-            this.BtnBuscarPaciente.Click += new System.EventHandler(this.BtnBuscarPaciente_Click);
             // 
             // panelAsignacion
             // 
@@ -310,9 +291,8 @@ namespace HospitalManagementSystem
             this.panelAsignacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAsignacion.ForeColor = System.Drawing.Color.White;
             this.panelAsignacion.Location = new System.Drawing.Point(0, 0);
-            this.panelAsignacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelAsignacion.Name = "panelAsignacion";
-            this.panelAsignacion.Size = new System.Drawing.Size(1161, 894);
+            this.panelAsignacion.Size = new System.Drawing.Size(774, 581);
             this.panelAsignacion.TabIndex = 1;
             this.panelAsignacion.Visible = false;
             // 
@@ -320,8 +300,7 @@ namespace HospitalManagementSystem
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(0, 629);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(0, 409);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(20, 20);
             this.label13.TabIndex = 59;
@@ -331,8 +310,7 @@ namespace HospitalManagementSystem
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(0, 429);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(0, 279);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(20, 20);
             this.label12.TabIndex = 58;
@@ -342,8 +320,7 @@ namespace HospitalManagementSystem
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(0, 240);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(0, 156);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(20, 20);
             this.label11.TabIndex = 57;
@@ -353,8 +330,7 @@ namespace HospitalManagementSystem
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1062, 158);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(708, 103);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 20);
             this.label10.TabIndex = 56;
@@ -364,8 +340,7 @@ namespace HospitalManagementSystem
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(956, 158);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(637, 103);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 20);
             this.label9.TabIndex = 55;
@@ -375,8 +350,7 @@ namespace HospitalManagementSystem
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(837, 158);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(558, 103);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(27, 20);
             this.label8.TabIndex = 54;
@@ -386,8 +360,7 @@ namespace HospitalManagementSystem
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(738, 158);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(492, 103);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 20);
             this.label7.TabIndex = 53;
@@ -397,8 +370,7 @@ namespace HospitalManagementSystem
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(620, 158);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(413, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 20);
             this.label6.TabIndex = 52;
@@ -408,8 +380,7 @@ namespace HospitalManagementSystem
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(520, 158);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(347, 103);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(27, 20);
             this.label5.TabIndex = 51;
@@ -419,8 +390,7 @@ namespace HospitalManagementSystem
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(411, 158);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(274, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 20);
             this.label4.TabIndex = 50;
@@ -430,8 +400,7 @@ namespace HospitalManagementSystem
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(286, 158);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(191, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 20);
             this.label3.TabIndex = 49;
@@ -441,8 +410,7 @@ namespace HospitalManagementSystem
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(174, 158);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(116, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 20);
             this.label2.TabIndex = 48;
@@ -452,8 +420,7 @@ namespace HospitalManagementSystem
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(60, 158);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(40, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 20);
             this.label1.TabIndex = 47;
@@ -462,91 +429,81 @@ namespace HospitalManagementSystem
             // C10
             // 
             this.C10.BackColor = System.Drawing.Color.Green;
-            this.C10.Location = new System.Drawing.Point(1048, 609);
-            this.C10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C10.Location = new System.Drawing.Point(699, 396);
             this.C10.Name = "C10";
-            this.C10.Size = new System.Drawing.Size(75, 77);
+            this.C10.Size = new System.Drawing.Size(50, 50);
             this.C10.TabIndex = 46;
             // 
             // C09
             // 
             this.C09.BackColor = System.Drawing.Color.Green;
-            this.C09.Location = new System.Drawing.Point(942, 609);
-            this.C09.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C09.Location = new System.Drawing.Point(628, 396);
             this.C09.Name = "C09";
-            this.C09.Size = new System.Drawing.Size(75, 77);
+            this.C09.Size = new System.Drawing.Size(50, 50);
             this.C09.TabIndex = 45;
             // 
             // C08
             // 
             this.C08.BackColor = System.Drawing.Color.Green;
-            this.C08.Location = new System.Drawing.Point(820, 609);
-            this.C08.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C08.Location = new System.Drawing.Point(547, 396);
             this.C08.Name = "C08";
-            this.C08.Size = new System.Drawing.Size(75, 77);
+            this.C08.Size = new System.Drawing.Size(50, 50);
             this.C08.TabIndex = 44;
             // 
             // C07
             // 
             this.C07.BackColor = System.Drawing.Color.Green;
-            this.C07.Location = new System.Drawing.Point(723, 609);
-            this.C07.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C07.Location = new System.Drawing.Point(482, 396);
             this.C07.Name = "C07";
-            this.C07.Size = new System.Drawing.Size(75, 77);
+            this.C07.Size = new System.Drawing.Size(50, 50);
             this.C07.TabIndex = 43;
             // 
             // C06
             // 
             this.C06.BackColor = System.Drawing.Color.Green;
-            this.C06.Location = new System.Drawing.Point(606, 609);
-            this.C06.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C06.Location = new System.Drawing.Point(404, 396);
             this.C06.Name = "C06";
-            this.C06.Size = new System.Drawing.Size(75, 77);
+            this.C06.Size = new System.Drawing.Size(50, 50);
             this.C06.TabIndex = 42;
             // 
             // C05
             // 
             this.C05.BackColor = System.Drawing.Color.Green;
-            this.C05.Location = new System.Drawing.Point(504, 609);
-            this.C05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C05.Location = new System.Drawing.Point(336, 396);
             this.C05.Name = "C05";
-            this.C05.Size = new System.Drawing.Size(75, 77);
+            this.C05.Size = new System.Drawing.Size(50, 50);
             this.C05.TabIndex = 41;
             // 
             // C04
             // 
             this.C04.BackColor = System.Drawing.Color.Green;
-            this.C04.Location = new System.Drawing.Point(393, 609);
-            this.C04.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C04.Location = new System.Drawing.Point(262, 396);
             this.C04.Name = "C04";
-            this.C04.Size = new System.Drawing.Size(75, 77);
+            this.C04.Size = new System.Drawing.Size(50, 50);
             this.C04.TabIndex = 40;
             // 
             // C03
             // 
             this.C03.BackColor = System.Drawing.Color.Green;
-            this.C03.Location = new System.Drawing.Point(270, 609);
-            this.C03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C03.Location = new System.Drawing.Point(180, 396);
             this.C03.Name = "C03";
-            this.C03.Size = new System.Drawing.Size(75, 77);
+            this.C03.Size = new System.Drawing.Size(50, 50);
             this.C03.TabIndex = 39;
             // 
             // C02
             // 
             this.C02.BackColor = System.Drawing.Color.Green;
-            this.C02.Location = new System.Drawing.Point(156, 609);
-            this.C02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C02.Location = new System.Drawing.Point(104, 396);
             this.C02.Name = "C02";
-            this.C02.Size = new System.Drawing.Size(75, 77);
+            this.C02.Size = new System.Drawing.Size(50, 50);
             this.C02.TabIndex = 38;
             // 
             // C01
             // 
             this.C01.BackColor = System.Drawing.Color.Green;
-            this.C01.Location = new System.Drawing.Point(39, 609);
-            this.C01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.C01.Location = new System.Drawing.Point(26, 396);
             this.C01.Name = "C01";
-            this.C01.Size = new System.Drawing.Size(75, 77);
+            this.C01.Size = new System.Drawing.Size(50, 50);
             this.C01.TabIndex = 37;
             // 
             // label24
@@ -554,8 +511,7 @@ namespace HospitalManagementSystem
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(998, 68);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(665, 44);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(73, 21);
             this.label24.TabIndex = 36;
@@ -564,10 +520,9 @@ namespace HospitalManagementSystem
             // label23
             // 
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
-            this.label23.Location = new System.Drawing.Point(951, 68);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(634, 44);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(38, 38);
+            this.label23.Size = new System.Drawing.Size(25, 25);
             this.label23.TabIndex = 35;
             // 
             // label22
@@ -575,8 +530,7 @@ namespace HospitalManagementSystem
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(998, 9);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(665, 6);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(84, 21);
             this.label22.TabIndex = 34;
@@ -585,10 +539,9 @@ namespace HospitalManagementSystem
             // label21
             // 
             this.label21.BackColor = System.Drawing.Color.Green;
-            this.label21.Location = new System.Drawing.Point(951, 14);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(634, 9);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(38, 38);
+            this.label21.Size = new System.Drawing.Size(25, 25);
             this.label21.TabIndex = 33;
             // 
             // label20
@@ -597,8 +550,7 @@ namespace HospitalManagementSystem
             this.label20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(4, 14);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(3, 9);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(285, 32);
             this.label20.TabIndex = 32;
@@ -607,181 +559,161 @@ namespace HospitalManagementSystem
             // B10
             // 
             this.B10.BackColor = System.Drawing.Color.Green;
-            this.B10.Location = new System.Drawing.Point(1048, 409);
-            this.B10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B10.Location = new System.Drawing.Point(699, 266);
             this.B10.Name = "B10";
-            this.B10.Size = new System.Drawing.Size(75, 77);
+            this.B10.Size = new System.Drawing.Size(50, 50);
             this.B10.TabIndex = 31;
             // 
             // B09
             // 
             this.B09.BackColor = System.Drawing.Color.Green;
-            this.B09.Location = new System.Drawing.Point(942, 409);
-            this.B09.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B09.Location = new System.Drawing.Point(628, 266);
             this.B09.Name = "B09";
-            this.B09.Size = new System.Drawing.Size(75, 77);
+            this.B09.Size = new System.Drawing.Size(50, 50);
             this.B09.TabIndex = 30;
             // 
             // B08
             // 
             this.B08.BackColor = System.Drawing.Color.Green;
-            this.B08.Location = new System.Drawing.Point(820, 409);
-            this.B08.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B08.Location = new System.Drawing.Point(547, 266);
             this.B08.Name = "B08";
-            this.B08.Size = new System.Drawing.Size(75, 77);
+            this.B08.Size = new System.Drawing.Size(50, 50);
             this.B08.TabIndex = 29;
             // 
             // B07
             // 
             this.B07.BackColor = System.Drawing.Color.Green;
-            this.B07.Location = new System.Drawing.Point(723, 409);
-            this.B07.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B07.Location = new System.Drawing.Point(482, 266);
             this.B07.Name = "B07";
-            this.B07.Size = new System.Drawing.Size(75, 77);
+            this.B07.Size = new System.Drawing.Size(50, 50);
             this.B07.TabIndex = 28;
             // 
             // B06
             // 
             this.B06.BackColor = System.Drawing.Color.Green;
-            this.B06.Location = new System.Drawing.Point(606, 409);
-            this.B06.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B06.Location = new System.Drawing.Point(404, 266);
             this.B06.Name = "B06";
-            this.B06.Size = new System.Drawing.Size(75, 77);
+            this.B06.Size = new System.Drawing.Size(50, 50);
             this.B06.TabIndex = 27;
             // 
             // B05
             // 
             this.B05.BackColor = System.Drawing.Color.Green;
-            this.B05.Location = new System.Drawing.Point(504, 409);
-            this.B05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B05.Location = new System.Drawing.Point(336, 266);
             this.B05.Name = "B05";
-            this.B05.Size = new System.Drawing.Size(75, 77);
+            this.B05.Size = new System.Drawing.Size(50, 50);
             this.B05.TabIndex = 26;
             // 
             // B04
             // 
             this.B04.BackColor = System.Drawing.Color.Green;
-            this.B04.Location = new System.Drawing.Point(393, 409);
-            this.B04.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B04.Location = new System.Drawing.Point(262, 266);
             this.B04.Name = "B04";
-            this.B04.Size = new System.Drawing.Size(75, 77);
+            this.B04.Size = new System.Drawing.Size(50, 50);
             this.B04.TabIndex = 25;
             // 
             // B03
             // 
             this.B03.BackColor = System.Drawing.Color.Green;
-            this.B03.Location = new System.Drawing.Point(270, 409);
-            this.B03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B03.Location = new System.Drawing.Point(180, 266);
             this.B03.Name = "B03";
-            this.B03.Size = new System.Drawing.Size(75, 77);
+            this.B03.Size = new System.Drawing.Size(50, 50);
             this.B03.TabIndex = 24;
             // 
             // B02
             // 
             this.B02.BackColor = System.Drawing.Color.Green;
-            this.B02.Location = new System.Drawing.Point(156, 409);
-            this.B02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B02.Location = new System.Drawing.Point(104, 266);
             this.B02.Name = "B02";
-            this.B02.Size = new System.Drawing.Size(75, 77);
+            this.B02.Size = new System.Drawing.Size(50, 50);
             this.B02.TabIndex = 23;
             // 
             // B01
             // 
             this.B01.BackColor = System.Drawing.Color.Green;
-            this.B01.Location = new System.Drawing.Point(39, 409);
-            this.B01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.B01.Location = new System.Drawing.Point(26, 266);
             this.B01.Name = "B01";
-            this.B01.Size = new System.Drawing.Size(75, 77);
+            this.B01.Size = new System.Drawing.Size(50, 50);
             this.B01.TabIndex = 22;
             // 
             // A10
             // 
             this.A10.BackColor = System.Drawing.Color.Green;
-            this.A10.Location = new System.Drawing.Point(1048, 222);
-            this.A10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A10.Location = new System.Drawing.Point(699, 144);
             this.A10.Name = "A10";
-            this.A10.Size = new System.Drawing.Size(75, 77);
+            this.A10.Size = new System.Drawing.Size(50, 50);
             this.A10.TabIndex = 21;
             // 
             // A09
             // 
             this.A09.BackColor = System.Drawing.Color.Green;
-            this.A09.Location = new System.Drawing.Point(942, 222);
-            this.A09.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A09.Location = new System.Drawing.Point(628, 144);
             this.A09.Name = "A09";
-            this.A09.Size = new System.Drawing.Size(75, 77);
+            this.A09.Size = new System.Drawing.Size(50, 50);
             this.A09.TabIndex = 20;
             // 
             // A08
             // 
             this.A08.BackColor = System.Drawing.Color.Green;
-            this.A08.Location = new System.Drawing.Point(820, 222);
-            this.A08.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A08.Location = new System.Drawing.Point(547, 144);
             this.A08.Name = "A08";
-            this.A08.Size = new System.Drawing.Size(75, 77);
+            this.A08.Size = new System.Drawing.Size(50, 50);
             this.A08.TabIndex = 19;
             // 
             // A07
             // 
             this.A07.BackColor = System.Drawing.Color.Green;
-            this.A07.Location = new System.Drawing.Point(723, 222);
-            this.A07.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A07.Location = new System.Drawing.Point(482, 144);
             this.A07.Name = "A07";
-            this.A07.Size = new System.Drawing.Size(75, 77);
+            this.A07.Size = new System.Drawing.Size(50, 50);
             this.A07.TabIndex = 18;
             // 
             // A06
             // 
             this.A06.BackColor = System.Drawing.Color.Green;
-            this.A06.Location = new System.Drawing.Point(606, 222);
-            this.A06.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A06.Location = new System.Drawing.Point(404, 144);
             this.A06.Name = "A06";
-            this.A06.Size = new System.Drawing.Size(75, 77);
+            this.A06.Size = new System.Drawing.Size(50, 50);
             this.A06.TabIndex = 17;
             // 
             // A05
             // 
             this.A05.BackColor = System.Drawing.Color.Green;
-            this.A05.Location = new System.Drawing.Point(504, 222);
-            this.A05.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A05.Location = new System.Drawing.Point(336, 144);
             this.A05.Name = "A05";
-            this.A05.Size = new System.Drawing.Size(75, 77);
+            this.A05.Size = new System.Drawing.Size(50, 50);
             this.A05.TabIndex = 16;
             // 
             // A04
             // 
             this.A04.BackColor = System.Drawing.Color.Green;
-            this.A04.Location = new System.Drawing.Point(393, 222);
-            this.A04.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A04.Location = new System.Drawing.Point(262, 144);
             this.A04.Name = "A04";
-            this.A04.Size = new System.Drawing.Size(75, 77);
+            this.A04.Size = new System.Drawing.Size(50, 50);
             this.A04.TabIndex = 15;
             // 
             // A03
             // 
             this.A03.BackColor = System.Drawing.Color.Green;
-            this.A03.Location = new System.Drawing.Point(270, 222);
-            this.A03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A03.Location = new System.Drawing.Point(180, 144);
             this.A03.Name = "A03";
-            this.A03.Size = new System.Drawing.Size(75, 77);
+            this.A03.Size = new System.Drawing.Size(50, 50);
             this.A03.TabIndex = 14;
             // 
             // A02
             // 
             this.A02.BackColor = System.Drawing.Color.Green;
-            this.A02.Location = new System.Drawing.Point(156, 222);
-            this.A02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A02.Location = new System.Drawing.Point(104, 144);
             this.A02.Name = "A02";
-            this.A02.Size = new System.Drawing.Size(75, 77);
+            this.A02.Size = new System.Drawing.Size(50, 50);
             this.A02.TabIndex = 13;
             // 
             // A01
             // 
             this.A01.BackColor = System.Drawing.Color.Green;
-            this.A01.Location = new System.Drawing.Point(39, 222);
-            this.A01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.A01.Location = new System.Drawing.Point(26, 144);
             this.A01.Name = "A01";
-            this.A01.Size = new System.Drawing.Size(75, 77);
+            this.A01.Size = new System.Drawing.Size(50, 50);
             this.A01.TabIndex = 12;
             // 
             // panelReportes
@@ -790,9 +722,8 @@ namespace HospitalManagementSystem
             this.panelReportes.Controls.Add(this.grdvReports);
             this.panelReportes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelReportes.Location = new System.Drawing.Point(0, 0);
-            this.panelReportes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelReportes.Name = "panelReportes";
-            this.panelReportes.Size = new System.Drawing.Size(1161, 894);
+            this.panelReportes.Size = new System.Drawing.Size(774, 581);
             this.panelReportes.TabIndex = 0;
             this.panelReportes.Visible = false;
             // 
@@ -833,7 +764,6 @@ namespace HospitalManagementSystem
             this.grdvReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdvReports.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.grdvReports.Location = new System.Drawing.Point(0, 0);
-            this.grdvReports.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grdvReports.Name = "grdvReports";
             this.grdvReports.ReadOnly = true;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -844,7 +774,7 @@ namespace HospitalManagementSystem
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.grdvReports.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.grdvReports.Size = new System.Drawing.Size(1161, 894);
+            this.grdvReports.Size = new System.Drawing.Size(774, 581);
             this.grdvReports.TabIndex = 0;
             this.grdvReports.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdvReports_CellContentClick);
             // 
@@ -921,9 +851,8 @@ namespace HospitalManagementSystem
             this.panelHome.Controls.Add(this.pictureBox2);
             this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHome.Location = new System.Drawing.Point(0, 0);
-            this.panelHome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelHome.Name = "panelHome";
-            this.panelHome.Size = new System.Drawing.Size(1161, 894);
+            this.panelHome.Size = new System.Drawing.Size(774, 581);
             this.panelHome.TabIndex = 2;
             // 
             // lblFecha
@@ -931,8 +860,7 @@ namespace HospitalManagementSystem
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.lblFecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lblFecha.Location = new System.Drawing.Point(357, 711);
-            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFecha.Location = new System.Drawing.Point(238, 462);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(148, 46);
             this.lblFecha.TabIndex = 6;
@@ -944,8 +872,7 @@ namespace HospitalManagementSystem
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F);
             this.lblHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(159)))), ((int)(((byte)(193)))));
-            this.lblHora.Location = new System.Drawing.Point(423, 540);
-            this.lblHora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHora.Location = new System.Drawing.Point(282, 351);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(223, 69);
             this.lblHora.TabIndex = 5;
@@ -957,14 +884,33 @@ namespace HospitalManagementSystem
             this.HoraFecha.Enabled = true;
             this.HoraFecha.Tick += new System.EventHandler(this.HoraFecha_Tick);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::HospitalManagementSystem.Properties.Resources.lupa;
+            this.pictureBox4.Location = new System.Drawing.Point(520, 125);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(65, 54);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::HospitalManagementSystem.Properties.Resources.Paciente1;
+            this.pictureBox3.Location = new System.Drawing.Point(520, 220);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(65, 67);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox2.Image = global::HospitalManagementSystem.Properties.Resources.hsp;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1161, 460);
+            this.pictureBox2.Size = new System.Drawing.Size(774, 299);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -980,10 +926,9 @@ namespace HospitalManagementSystem
             this.btnMinimize.IconColor = System.Drawing.Color.White;
             this.btnMinimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMinimize.IconSize = 20;
-            this.btnMinimize.Location = new System.Drawing.Point(968, 0);
-            this.btnMinimize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMinimize.Location = new System.Drawing.Point(645, 0);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(68, 38);
+            this.btnMinimize.Size = new System.Drawing.Size(45, 25);
             this.btnMinimize.TabIndex = 4;
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -999,10 +944,9 @@ namespace HospitalManagementSystem
             this.btnMaximize.IconColor = System.Drawing.Color.White;
             this.btnMaximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMaximize.IconSize = 20;
-            this.btnMaximize.Location = new System.Drawing.Point(1030, 0);
-            this.btnMaximize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMaximize.Location = new System.Drawing.Point(687, 0);
             this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(68, 38);
+            this.btnMaximize.Size = new System.Drawing.Size(45, 25);
             this.btnMaximize.TabIndex = 3;
             this.btnMaximize.UseVisualStyleBackColor = false;
             this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
@@ -1018,10 +962,9 @@ namespace HospitalManagementSystem
             this.btnClose.IconColor = System.Drawing.Color.White;
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 20;
-            this.btnClose.Location = new System.Drawing.Point(1094, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Location = new System.Drawing.Point(729, 0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(68, 38);
+            this.btnClose.Size = new System.Drawing.Size(45, 25);
             this.btnClose.TabIndex = 2;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.iconButton7_Click);
@@ -1039,11 +982,10 @@ namespace HospitalManagementSystem
             this.btnSignOut.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSignOut.IconSize = 30;
             this.btnSignOut.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnSignOut.Location = new System.Drawing.Point(0, 937);
-            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSignOut.Location = new System.Drawing.Point(0, 609);
             this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSignOut.Size = new System.Drawing.Size(345, 49);
+            this.btnSignOut.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnSignOut.Size = new System.Drawing.Size(230, 32);
             this.btnSignOut.TabIndex = 5;
             this.btnSignOut.Tag = "Exit";
             this.btnSignOut.Text = "        iconButton2";
@@ -1065,11 +1007,10 @@ namespace HospitalManagementSystem
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 35;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 308);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton5.Location = new System.Drawing.Point(0, 201);
             this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton5.Size = new System.Drawing.Size(345, 58);
+            this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.iconButton5.Size = new System.Drawing.Size(230, 38);
             this.iconButton5.TabIndex = 4;
             this.iconButton5.Tag = "Patients";
             this.iconButton5.Text = "        iconButton2";
@@ -1091,11 +1032,10 @@ namespace HospitalManagementSystem
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 35;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 250);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton4.Location = new System.Drawing.Point(0, 163);
             this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton4.Size = new System.Drawing.Size(345, 58);
+            this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.iconButton4.Size = new System.Drawing.Size(230, 38);
             this.iconButton4.TabIndex = 3;
             this.iconButton4.Tag = "Assignment";
             this.iconButton4.Text = "        iconButton2";
@@ -1117,11 +1057,10 @@ namespace HospitalManagementSystem
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 35;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 192);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton3.Location = new System.Drawing.Point(0, 125);
             this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton3.Size = new System.Drawing.Size(345, 58);
+            this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.iconButton3.Size = new System.Drawing.Size(230, 38);
             this.iconButton3.TabIndex = 2;
             this.iconButton3.Tag = "Reports";
             this.iconButton3.Text = "        iconButton2";
@@ -1143,11 +1082,10 @@ namespace HospitalManagementSystem
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 35;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 134);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton2.Location = new System.Drawing.Point(0, 87);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.iconButton2.Size = new System.Drawing.Size(345, 58);
+            this.iconButton2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.iconButton2.Size = new System.Drawing.Size(230, 38);
             this.iconButton2.TabIndex = 1;
             this.iconButton2.Tag = "Home";
             this.iconButton2.Text = "        iconButton2";
@@ -1165,10 +1103,9 @@ namespace HospitalManagementSystem
             this.btnMenu.IconColor = System.Drawing.Color.White;
             this.btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMenu.IconSize = 30;
-            this.btnMenu.Location = new System.Drawing.Point(228, 18);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMenu.Location = new System.Drawing.Point(152, 12);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(90, 92);
+            this.btnMenu.Size = new System.Drawing.Size(60, 60);
             this.btnMenu.TabIndex = 1;
             this.btnMenu.Tag = "Menu";
             this.btnMenu.UseVisualStyleBackColor = true;
@@ -1178,24 +1115,22 @@ namespace HospitalManagementSystem
             // 
             this.pictureBox1.Image = global::HospitalManagementSystem.Properties.Resources.Logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(131, 87);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // Recepcion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1506, 986);
+            this.ClientSize = new System.Drawing.Size(1004, 641);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Recepcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recepcion";
@@ -1207,7 +1142,6 @@ namespace HospitalManagementSystem
             this.panelDesktop.ResumeLayout(false);
             this.panelDesktop.PerformLayout();
             this.panelPaciente.ResumeLayout(false);
-            this.panelPaciente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPaciente)).EndInit();
             this.panelAsignacion.ResumeLayout(false);
             this.panelAsignacion.PerformLayout();
@@ -1215,6 +1149,8 @@ namespace HospitalManagementSystem
             ((System.ComponentModel.ISupportInitialize)(this.grdvReports)).EndInit();
             this.panelHome.ResumeLayout(false);
             this.panelHome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -1299,10 +1235,10 @@ namespace HospitalManagementSystem
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Panel panelPaciente;
-        private System.Windows.Forms.Button BtnBuscarPaciente;
         private System.Windows.Forms.Button BtnVer;
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.DataGridView DGVPaciente;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
