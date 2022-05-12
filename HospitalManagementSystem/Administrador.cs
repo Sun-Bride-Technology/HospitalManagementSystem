@@ -215,7 +215,8 @@ namespace HospitalManagementSystem
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-
+            AgregarDoctor doctor = new AgregarDoctor();
+            doctor.Show();
         }
     }
 }

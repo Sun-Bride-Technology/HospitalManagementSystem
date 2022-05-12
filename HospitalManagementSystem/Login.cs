@@ -116,6 +116,10 @@ namespace HospitalManagementSystem
                         }
                         this.Hide();
                     }
+                    else
+                    {
+                        MessageBox.Show("Usuario / Contraseña incorrectos");
+                    }
                 }
                 catch (Exception ex)
                 {

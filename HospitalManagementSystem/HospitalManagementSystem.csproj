@@ -142,6 +142,12 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Access.cs" />
+    <Compile Include="AgregarDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDoctor.Designer.cs">
+      <DependentUpon>AgregarDoctor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Asignacion.cs" />
     <Compile Include="Models\Consulta.cs" />
     <Compile Include="Models\Medico.cs" />
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarDoctor.resx">
+      <DependentUpon>AgregarDoctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
